@@ -55,7 +55,7 @@ def freshWHOData(countryCode):
     score = 0
     df_score = countryData.copy()
     df_score = df_score.fillna(0)
-    df_score['score'] = df_score.index * (df_score.new_cases + df_score.new_deaths + df_score.people_vaccinated + df_score.population_density) / 10000
+    df_score['score'] = df_score.index * ((df_score.new_cases + df_score.new_deaths ^ 2) / df_score.people_vaccinated * df_score.population_density) / 10000
     score = sum(df_score['score']) / 100000
 
     return countryData, score
